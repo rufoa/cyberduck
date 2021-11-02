@@ -505,7 +505,7 @@ namespace Ch.Cyberduck.Ui.Controller
                             String.Format(LocaleFactory.localizedString("Do you want to search in {0} recursively?"),
                                 Workdir.getName()), null, String.Format("{0}", LocaleFactory.localizedString("Search")),
                             true);
-                    if (result.CommandButtonResult == 0)
+                    if (result.Button == Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT.IDYES)
                     {
                         background(new SearchAction(this));
                     }
@@ -1396,7 +1396,7 @@ namespace Ch.Cyberduck.Ui.Controller
             TaskDialogResult result = QuestionBox(LocaleFactory.localizedString("Delete Bookmark"),
                 LocaleFactory.localizedString("Do you want to delete the selected bookmark?"), alertText.ToString(),
                 String.Format("{0}", LocaleFactory.localizedString("Delete")), true);
-            if (result.CommandButtonResult == 0)
+            if (result.Button == Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT.IDYES)
             {
                 _bookmarkModel.Source.removeAll(Utils.ConvertToJavaList(selected));
             }
@@ -2861,7 +2861,7 @@ namespace Ch.Cyberduck.Ui.Controller
                                     break;
                             }
                         });
-                    return result.Result != TaskDialogSimpleResult.Cancel;
+                    return result.Button != Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT.IDCANCEL;
                 }
             }
             UnmountImpl(disconnected);
@@ -3095,7 +3095,7 @@ namespace Ch.Cyberduck.Ui.Controller
             }
             TaskDialogResult r = QuestionBox(LocaleFactory.localizedString("Delete"), alertText.ToString(),
                 content.ToString(), String.Format("{0}", LocaleFactory.localizedString("Delete")), true);
-            if (r.CommandButtonResult == 0)
+            if (r.Button == Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT.IDYES)
             {
                 DeletePathsImpl(normalized);
             }
@@ -3156,7 +3156,7 @@ namespace Ch.Cyberduck.Ui.Controller
             {
                 TaskDialogResult r = QuestionBox(LocaleFactory.localizedString("Overwrite"), alertText.ToString(),
                     content.ToString(), String.Format("{0}", LocaleFactory.localizedString("Overwrite")), true);
-                return r.CommandButtonResult == 0;
+                return r.Button == Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT.IDYES;
             }
             else
             {
