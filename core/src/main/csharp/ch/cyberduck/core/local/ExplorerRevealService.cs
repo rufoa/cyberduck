@@ -15,6 +15,7 @@
 // Bug fixes, suggestions and comments should be sent to:
 // yves@cyberduck.ch
 //
+
 using ch.cyberduck.core.local;
 using System;
 using System.IO;
@@ -24,7 +25,7 @@ namespace Ch.Cyberduck.Core.Local
 {
     public sealed class ExplorerRevealService : RevealService
     {
-        public bool reveal(ch.cyberduck.core.Local l)
+        public bool reveal(ch.cyberduck.core.Local l, boolean select)
         {
             IntPtr nativeFolder = IntPtr.Zero;
             try
@@ -51,7 +52,7 @@ namespace Ch.Cyberduck.Core.Local
                     {
                         fileArray = new IntPtr[] { };
                     }
-
+                    // Opens a Windows Explorer window with specified items in a particular folder selected.
                     NativeMethods.SHOpenFolderAndSelectItems(nativeFolder, (uint)fileArray.Length, fileArray, 0);
                 }
                 finally
