@@ -230,7 +230,7 @@ public class OpenSshConfig {
             else if("IdentityAgent".equalsIgnoreCase(keyword)) {
                 for(final Host c : current) {
                     if(c.identityAgent == null) {
-                        c.identityAgent = dequote(argValue);
+                        c.identityAgent = LocalFactory.get(dequote(argValue));
                     }
                 }
             }
